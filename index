@@ -3,10 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First GitHub Website</title>
+    <title>Video Player Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        video {
+            margin-top: 20px;
+            max-width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is my first website hosted on GitHub Pages. Created for Halloween enjoyers</p>
+    <h1>Video Player</h1>
+
+    <!-- Video URL Input Form -->
+    <form id="videoForm">
+        <input type="text" id="videoURL" placeholder="Enter video URL here" required>
+        <input type="submit" value="Play Video">
+    </form>
+
+    <!-- Video Player Section -->
+    <video id="videoPlayer" width="640" height="360" controls>
+        <source id="videoSource" src="" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        document.getElementById('videoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const videoURL = document.getElementById('videoURL').value;
+            const videoSource = document.getElementById('videoSource');
+            videoSource.src = videoURL;
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.load();
+            videoPlayer.play();
+        });
+    </script>
 </body>
 </html>
